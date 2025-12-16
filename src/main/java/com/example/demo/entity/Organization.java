@@ -20,6 +20,8 @@ public class Organization {
         this.name = name;
     }
 
+
     private int id;
     private String name;
+    private double salary;
 }
