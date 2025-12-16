@@ -43,8 +43,5 @@ public class HomeController {
             return homeService.updateById(id, organization);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable Integer id){
-        homeService.deleteById(id);
-    }
+
 }
