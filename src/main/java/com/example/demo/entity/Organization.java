@@ -1,9 +1,15 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Organization {
+
+    @Id
+    private int id;
+    private String name;
+    private double salary;
     public int getId() {
         return id;
     }
@@ -20,8 +26,13 @@ public class Organization {
         this.name = name;
     }
 
+    public double getSalary() {
+        return salary;
+    }
 
-    private int id;
-    private String name;
-    private double salary;
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+
 }
