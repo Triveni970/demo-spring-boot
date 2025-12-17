@@ -4,6 +4,7 @@ import com.example.demo.entity.Organization;
 import com.example.demo.repository.Organizationdb;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.aspectj.weaver.ast.Or;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class HomeService {
         this.organizationdb = organizationdb;
     }
 
-    public Organization saveEmployeeDetails(Organization organization){
-        return organizationdb.save(organization);
+    public List<Organization> saveEmployeeDetails(List<Organization> organization){
+        return organizationdb.saveAll(organization);
     }
 
     public Optional<Organization> findEmployeeById(Integer id){
@@ -39,5 +40,14 @@ public class HomeService {
 
     public void deleteById(Integer id){
         organizationdb.deleteById(id);
+    }
+
+    public List<Organization> searchByName(String name){
+        return organizationdb.findByName(name);
+    }
+
+    public List<Organization> searchBySalaryRange(Double salary){
+        Sort sort = Sort.by(Sort.Direction.ASC, "salary");
+        return organizationdb.findBySalary(salary,sort);
     }
 }
